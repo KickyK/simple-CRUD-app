@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Backbone books collection with search bar </title>
+  
+  <link type="text/css" rel="stylesheet" href="css/css_reset.css"	>
+
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='https://cdn.jsdelivr.net/foundation/5.3.3/css/foundation.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div class="wrap">
+  <h3>Library books collection</h3>
+  <form action="" id="addBook">
+    <input id="book_title" type="text" placeholder="Book Title" class="form-input"></input>
+    <input id="book_author" type="text" placeholder="Book Author" class="form-input"></input>
+    <input id="book_year" type="text" placeholder="Year Published" class="form-input" />
+    <button type="submit" class="form-button">Submit</button>
+  </form>
+  <table id="allBooks" class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th colspan="2">Actions</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
+<h3>Google Book Search</h3>
+<form>
+    <input type="text" id="query">
+    <button onclick="search(document.querySelector('#query').value); return false;">Search</button>
+</form>
+<br />
+<div id="results"></div>
+
+
+
+<script id="bookTemplate" type="text/template">
+    <td><span id="title"><%= title %></span></td>
+    <td><span id="author"><%= author %></span></td>
+    <td><span id="year"><%= year %></span></td>
+      
+    <td><a href="#" class="edit"><span>Edit</span></a></td>
+    <td><a href="#" class="delete"><span>Delete</span></a></td>
+</script>
+<div id="content"></div>
+    <script>
+      function handleResponse(response) {
+      for (var i = 0; i < response.items.length; i++) {
+        var item = response.items[i];
+        // in production code, item.text should have the HTML entities escaped.
+        document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title;
+      }
+    }
+</script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.13/backbone.localStorage-min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
