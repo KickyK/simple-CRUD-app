@@ -1,0 +1,18 @@
+    
+    #crud{
+		text-align: center;
+	}
+	
+	
+	
+	input[type='submit'], button, [aria-label]{
+      cursor: pointer;
+    }
+	
+	
+    #spoiler{
+
+      display: none;
+      text-align: center;
+      
+    }
